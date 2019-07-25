@@ -1,0 +1,8 @@
+{
+    "workbench.panel.defaultLocation": "right",
+    "terminal.integrated.fontSize": 15,
+    "fancyTerminal.background": "Black",
+    "fancyTerminal.foreground": "Pale Green",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.rendererType": "canvas"
+}

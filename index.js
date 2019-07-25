@@ -12,7 +12,7 @@ server.get('/api/users', (req, res) =>{
     .catch(err => res.status(500).json(err)) 
 })
 
-server.get('/api/user/:id', (req, res) => {
+server.get('/api/users/:id', (req, res) => {
     db.findById(req.params.id)
     .then(user => {
         res.status(200).json(user)
@@ -40,6 +40,24 @@ server.post('/api/users/', (req, res) =>{
         })
     }
 
+})
+
+server.delete('/api/users/:id', (req, res) => {
+    const userId = req.params.id;
+    if(!userId){
+        res.status(404).json({Message: 'The user with the specified ID does not exist'})
+    } else {
+        db.remove(req.params.id)
+        .then(count =>{
+            if(count && count > 0){
+                res.status(200).json({message: 'The user has been successfully deleted.'})
+            }
+        })
+        .catch(err =>{
+            res.status(500).jsaon({error: 'The user could not be removed'})
+        })
+    }
+   
 })
 
 server.listen(8000, ()=> console.log('API running on port 8000'))
